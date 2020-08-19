@@ -107,8 +107,8 @@ jobs:
 
             echo $HUB_IMAGE_NAME:$VERSION
 
-            docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$VERSION
+            docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$(date '+%y%m%d%H%M)
             
             #push to docker registry
-            docker push $HUB_IMAGE_NAME:$VERSION
+            docker push $HUB_IMAGE_NAME:$(date '+%y%m%d%H%M)
             docker push $HUB_IMAGE_NAME
