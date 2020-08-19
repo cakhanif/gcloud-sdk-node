@@ -106,6 +106,8 @@ jobs:
             [ "$VERSION" == "master" ] && VERSION=latest
 
             echo $HUB_IMAGE_NAME:$VERSION
+            
+            echo $HUB_IMAGE_NAME:$(date '+%y%m%d%H%M)
 
             docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$(date '+%y%m%d%H%M)
             
