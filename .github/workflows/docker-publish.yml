@@ -79,7 +79,7 @@ jobs:
     #need jobs test passed
     needs: push
     runs-on: ubuntu-latest
-    if: github.event_name == "push"
+    if: github.event_name == 'push'
     steps:
         - name: Login to Docker Registry
           run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://docker.io -u cakhanif --password-stdin
