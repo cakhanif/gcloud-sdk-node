@@ -80,7 +80,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
         - name: Build Image
-          run: docker build -t $HUB_IMAGE_NAME .
+          run: docker build . --file Dockerfile --tag $HUB_IMAGE_NAME
         
         - name: Login to Docker Registry
           run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://docker.io -u cakhanif --password-stdin
