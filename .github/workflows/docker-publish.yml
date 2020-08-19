@@ -15,8 +15,10 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
+  TZ: Asia/Jakarta
   IMAGE_NAME: gcloud-sdk-node
   HUB_IMAGE_NAME: cakhanif/gcloud-sdk-node
+  DATE: $(date '+%y%m%d%H%M')
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
@@ -96,6 +98,9 @@ jobs:
 
         - name: Push to Docker Registry
           run: |
+            # Setup Timezone
+            echo "Asia/Jakarta" > /etc/timezone
+            
             # Strip git ref prefix from version
             VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
 
@@ -109,9 +114,10 @@ jobs:
             
             echo $HUB_IMAGE_NAME:$(date '+%y%m%d%H%M')
             echo $(date '+%y%m%d%H%M')
+            echo $DATE
 
-            docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$(%y%m%d%H%M)
+            docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$DATE
             
             #push to docker registry
-            docker push $HUB_IMAGE_NAME:$(%y%m%d%H%M)
+            docker push $HUB_IMAGE_NAME:$DATE
             docker push $HUB_IMAGE_NAME
