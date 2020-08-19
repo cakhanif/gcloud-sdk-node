@@ -108,10 +108,10 @@ jobs:
             echo $HUB_IMAGE_NAME:$VERSION
             
             echo $HUB_IMAGE_NAME:$(date '+%y%m%d%H%M')
-            DATE: $(date '+%y%m%d%H%M')
+            echo $(date '+%y%m%d%H%M')
 
-            docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$DATE
+            docker tag $HUB_IMAGE_NAME $HUB_IMAGE_NAME:$(%y%m%d%H%M)
             
             #push to docker registry
-            docker push $HUB_IMAGE_NAME:$DATE
+            docker push $HUB_IMAGE_NAME:$(%y%m%d%H%M)
             docker push $HUB_IMAGE_NAME
