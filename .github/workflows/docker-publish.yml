@@ -99,7 +99,7 @@ jobs:
         - name: Push to Docker Registry
           run: |
             # Setup Timezone
-            echo "Asia/Jakarta" > /etc/timezone
+            sudo echo "Asia/Jakarta" > /etc/timezone
             
             # Strip git ref prefix from version
             VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
