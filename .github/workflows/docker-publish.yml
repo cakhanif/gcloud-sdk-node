@@ -74,18 +74,25 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+          
+          docker logout
   
   push_docker_hub: 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
         - uses: actions/checkout@v2
-
+  
         - name: Build Image
           run: docker build . --file Dockerfile --tag $HUB_IMAGE_NAME
         
         - name: Login to Docker Registry
-          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://docker.io -u cakhanif --password-stdin
+          run: |
+            #Logout from previous stage
+            docker logout
+            
+            #and login again
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://docker.io -u cakhanif --password-stdin
 
         - name: Push to Docker Registry
           run: |
