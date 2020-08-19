@@ -97,10 +97,7 @@ jobs:
             echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u cakhanif --password-stdin
 
         - name: Push to Docker Registry
-          run: |
-            # Setup Timezone
-            sudo echo "Asia/Jakarta" > /etc/timezone
-            
+          run: |           
             # Strip git ref prefix from version
             VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
 
