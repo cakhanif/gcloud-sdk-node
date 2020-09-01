@@ -4,7 +4,7 @@
 ## Contain
 * Gcloud SDK
 * Nodejs v10
+* Kubectl
 
 ## TODO
-* Kubectl
 * Istioctl
