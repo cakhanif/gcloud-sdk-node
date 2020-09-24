@@ -4,7 +4,7 @@ ENV TZ=Asia/Jakarta
 LABEL Maintainer="Mohammad Hanif"
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs npm build-essential checkinstall make libreadline-gplv2-dev libncursesw5-dev \
-    libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev wget ibcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev && \
+    libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev wget libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev && \
     wget https://www.python.org/ftp/python/3.5.9/Python-3.5.9.tgz && \
     tar xzf Python-3.5.9.tgz && mv Python-* /usr/src && \
     bash /usr/src/Python-3.5.9/configure --enable-optimizations && make install && \
